@@ -1,0 +1,12 @@
+[
+  {
+    "id": "claim-001",
+    "customerId": "customer-001",
+    "voucherId": "voucher-002",
+    "claimedAt": "2026-11-17T04:00:00.000Z",
+    "pointsSpent": 500,
+    "useLimit": 1,
+    "usesCount": 0,
+    "status": "usable"
+  }
+]

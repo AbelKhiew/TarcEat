@@ -1,0 +1,16 @@
+[
+  {
+    "id": "application-001",
+    "applicantOwnerId": "owner-001",
+    "restaurantName": "Amber Bakery",
+    "address": "15 Sample Road, Kuala Lumpur",
+    "contactPhone": "0341427788",
+    "bio": "Sample pending application.",
+    "status": "pending",
+    "approvedRestaurantId": null,
+    "reviewReason": null,
+    "reviewedBy": null,
+    "createdAt": "2026-11-17T04:00:00.000Z",
+    "reviewedAt": null
+  }
+]

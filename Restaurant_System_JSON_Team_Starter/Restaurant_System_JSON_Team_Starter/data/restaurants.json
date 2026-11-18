@@ -1,0 +1,41 @@
+[
+  {
+    "id": "restaurant-001",
+    "ownerId": "owner-001",
+    "name": "Jade Bowl Kitchen",
+    "address": "Sample address, Kuala Lumpur",
+    "phone": "0341415566",
+    "bio": "Fictional restaurant for development.",
+    "status": "active",
+    "isOpen": true,
+    "taxRateBps": 600,
+    "deliveryFeeSen": 500,
+    "createdAt": "2026-11-17T04:00:00.000Z"
+  },
+  {
+    "id": "restaurant-002",
+    "ownerId": "owner-001",
+    "name": "Cloud Nine Coffee",
+    "address": "Sample address, Kuala Lumpur",
+    "phone": "0341415566",
+    "bio": "Fictional restaurant for development.",
+    "status": "active",
+    "isOpen": true,
+    "taxRateBps": 600,
+    "deliveryFeeSen": 500,
+    "createdAt": "2026-11-17T04:00:00.000Z"
+  },
+  {
+    "id": "restaurant-003",
+    "ownerId": "owner-002",
+    "name": "Aki Ramen",
+    "address": "Sample address, Kuala Lumpur",
+    "phone": "0341415566",
+    "bio": "Fictional restaurant for development.",
+    "status": "active",
+    "isOpen": true,
+    "taxRateBps": 600,
+    "deliveryFeeSen": 600,
+    "createdAt": "2026-11-17T04:00:00.000Z"
+  }
+]

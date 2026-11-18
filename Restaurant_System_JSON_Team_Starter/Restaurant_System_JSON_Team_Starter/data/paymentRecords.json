@@ -1,0 +1,24 @@
+[
+  {
+    "id": "payment-001",
+    "orderId": "order-002",
+    "visitId": null,
+    "method": "online_banking",
+    "status": "paid",
+    "isSimulated": true,
+    "amountSen": 1272,
+    "paidAt": "2026-11-17T04:00:00.000Z",
+    "refundedAt": null
+  },
+  {
+    "id": "payment-002",
+    "orderId": "order-003",
+    "visitId": null,
+    "method": "online_banking",
+    "status": "paid",
+    "isSimulated": true,
+    "amountSen": 1272,
+    "paidAt": "2026-11-17T04:00:00.000Z",
+    "refundedAt": null
+  }
+]

@@ -1,0 +1,18 @@
+[
+  {
+    "id": "cart-001",
+    "customerId": "customer-001",
+    "restaurantId": "restaurant-001",
+    "mode": "dine_in",
+    "tableToken": "demo-jade-table-001",
+    "lines": [
+      {
+        "id": "cart-line-001",
+        "itemId": "item-001",
+        "quantity": 1,
+        "note": "Less sauce, please"
+      }
+    ],
+    "updatedAt": "2026-11-17T04:00:00.000Z"
+  }
+]

@@ -1,0 +1,15 @@
+export { registerCustomer } from "./functions/registerCustomer";
+export { getMyProfile } from "./functions/getMyProfile";
+export { updateMyProfile } from "./functions/updateMyProfile";
+export { deactivateMyProfile } from "./functions/deactivateMyProfile";
+export { getMyPoints } from "./functions/getMyPoints";
+export { listPointTransactions } from "./functions/listPointTransactions";
+export { listPlatformOffers } from "./functions/listPlatformOffers";
+export { claimPlatformVoucher } from "./functions/claimPlatformVoucher";
+export { listMyVouchers } from "./functions/listMyVouchers";
+export { listManagedVouchers } from "./functions/listManagedVouchers";
+export { createVoucher } from "./functions/createVoucher";
+export { updateVoucher } from "./functions/updateVoucher";
+export { withdrawVoucher } from "./functions/withdrawVoucher";
+export { previewVoucher } from "./functions/previewVoucher";
+export { getMyOrderHistory } from "./functions/getMyOrderHistory";

@@ -1,0 +1,10 @@
+[
+  {
+    "id": "visit-001",
+    "restaurantId": "restaurant-001",
+    "tableId": "table-002",
+    "status": "open",
+    "openedAt": "2026-11-17T04:00:00.000Z",
+    "closedAt": null
+  }
+]

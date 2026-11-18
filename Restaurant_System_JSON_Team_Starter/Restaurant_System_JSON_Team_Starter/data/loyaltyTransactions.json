@@ -1,0 +1,29 @@
+[
+  {
+    "id": "points-001",
+    "customerId": "customer-001",
+    "orderId": null,
+    "customerVoucherId": null,
+    "type": "opening_balance",
+    "pointsDelta": 1688,
+    "createdAt": "2026-11-17T04:00:00.000Z"
+  },
+  {
+    "id": "points-002",
+    "customerId": "customer-001",
+    "orderId": null,
+    "customerVoucherId": "claim-001",
+    "type": "voucher_claim",
+    "pointsDelta": -500,
+    "createdAt": "2026-11-17T04:00:00.000Z"
+  },
+  {
+    "id": "points-003",
+    "customerId": "customer-001",
+    "orderId": "order-003",
+    "customerVoucherId": null,
+    "type": "order_completion",
+    "pointsDelta": 12,
+    "createdAt": "2026-11-17T04:00:00.000Z"
+  }
+]

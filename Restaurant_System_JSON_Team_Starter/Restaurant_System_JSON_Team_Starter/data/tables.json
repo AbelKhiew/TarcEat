@@ -1,0 +1,20 @@
+[
+  {
+    "id": "table-001",
+    "restaurantId": "restaurant-001",
+    "tableNumber": 1,
+    "qrToken": "demo-jade-table-001"
+  },
+  {
+    "id": "table-002",
+    "restaurantId": "restaurant-001",
+    "tableNumber": 2,
+    "qrToken": "demo-jade-table-002"
+  },
+  {
+    "id": "table-003",
+    "restaurantId": "restaurant-002",
+    "tableNumber": 1,
+    "qrToken": "demo-cloud-table-001"
+  }
+]

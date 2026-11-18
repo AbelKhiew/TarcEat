@@ -1,0 +1,22 @@
+{
+  "guest": {
+    "profileId": null,
+    "role": null,
+    "selectedRestaurantId": null
+  },
+  "rootAdmin": {
+    "profileId": "admin-001",
+    "role": "root_admin",
+    "selectedRestaurantId": null
+  },
+  "owner": {
+    "profileId": "owner-001",
+    "role": "owner",
+    "selectedRestaurantId": "restaurant-001"
+  },
+  "customer": {
+    "profileId": "customer-001",
+    "role": "customer",
+    "selectedRestaurantId": null
+  }
+}

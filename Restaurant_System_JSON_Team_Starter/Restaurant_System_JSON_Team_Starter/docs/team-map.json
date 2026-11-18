@@ -1,0 +1,38 @@
+{
+  "onboarding": {
+    "member": "member-1",
+    "folder": "module-1-onboarding",
+    "number": 1,
+    "title": "Restaurant Profile & Store Onboarding"
+  },
+  "tables": {
+    "member": "member-1",
+    "folder": "module-3-tables",
+    "number": 3,
+    "title": "Physical Table & QR Code Engine"
+  },
+  "orders": {
+    "member": "member-2",
+    "folder": "module-4-orders",
+    "number": 4,
+    "title": "Multi-Channel Order Fulfillment"
+  },
+  "checkout": {
+    "member": "member-2",
+    "folder": "module-5-checkout",
+    "number": 5,
+    "title": "Shopping Cart & Checkout Gateway"
+  },
+  "catalog": {
+    "member": "member-3",
+    "folder": "module-2-catalog",
+    "number": 2,
+    "title": "Menu Catalog & Asset Management"
+  },
+  "loyalty": {
+    "member": "member-3",
+    "folder": "module-6-loyalty",
+    "number": 6,
+    "title": "Customer Profile & Loyalty Program"
+  }
+}

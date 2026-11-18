@@ -1,0 +1,33 @@
+{
+  "name": "restaurant-system-json-team-starter",
+  "version": "0.2.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "typecheck": "tsc --noEmit",
+    "check:rules": "node scripts/check-rules.mjs",
+    "check": "npm run check:rules && npm run typecheck",
+    "test:storage": "node --conditions=react-server --experimental-strip-types scripts/test-storage.mjs",
+    "predev": "npm run check:rules",
+    "prebuild": "npm run check:rules"
+  },
+  "engines": {
+    "node": ">=22"
+  },
+  "dependencies": {
+    "next": "^16.0.0",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "qrcode.react": "^4.2.0",
+    "server-only": "0.0.1"
+  },
+  "devDependencies": {
+    "typescript": "^5.9.0",
+    "@types/node": "^22.0.0",
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0"
+  },
+  "type": "module"
+}

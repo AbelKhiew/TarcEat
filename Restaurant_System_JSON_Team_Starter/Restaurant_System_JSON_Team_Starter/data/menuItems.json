@@ -1,0 +1,46 @@
+[
+  {
+    "id": "item-001",
+    "restaurantId": "restaurant-001",
+    "categoryId": "category-001",
+    "name": "Chicken Rice",
+    "description": "Sample menu item.",
+    "priceSen": 1800,
+    "imageUrl": null,
+    "isAvailable": true,
+    "archivedAt": null
+  },
+  {
+    "id": "item-002",
+    "restaurantId": "restaurant-001",
+    "categoryId": "category-002",
+    "name": "Iced Lemon Tea",
+    "description": "Sample menu item.",
+    "priceSen": 600,
+    "imageUrl": null,
+    "isAvailable": true,
+    "archivedAt": null
+  },
+  {
+    "id": "item-003",
+    "restaurantId": "restaurant-002",
+    "categoryId": "category-003",
+    "name": "Iced Latte",
+    "description": "Sample menu item.",
+    "priceSen": 1200,
+    "imageUrl": null,
+    "isAvailable": true,
+    "archivedAt": null
+  },
+  {
+    "id": "item-004",
+    "restaurantId": "restaurant-003",
+    "categoryId": "category-004",
+    "name": "Shoyu Ramen",
+    "description": "Sample menu item.",
+    "priceSen": 2200,
+    "imageUrl": null,
+    "isAvailable": true,
+    "archivedAt": null
+  }
+]

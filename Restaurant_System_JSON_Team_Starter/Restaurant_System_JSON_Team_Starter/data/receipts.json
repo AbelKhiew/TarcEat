@@ -1,0 +1,18 @@
+[
+  {
+    "id": "receipt-001",
+    "receiptNumber": "RCPT-DEMO-001",
+    "orderId": "order-003",
+    "visitId": null,
+    "paymentId": "payment-002",
+    "orderIds": [
+      "order-003"
+    ],
+    "subtotalSen": 1200,
+    "discountSen": 0,
+    "taxSen": 72,
+    "deliveryFeeSen": 0,
+    "totalSen": 1272,
+    "issuedAt": "2026-11-17T04:00:00.000Z"
+  }
+]

@@ -1,0 +1,22 @@
+[
+  {
+    "id": "category-001",
+    "restaurantId": "restaurant-001",
+    "name": "Main dishes"
+  },
+  {
+    "id": "category-002",
+    "restaurantId": "restaurant-001",
+    "name": "Drinks"
+  },
+  {
+    "id": "category-003",
+    "restaurantId": "restaurant-002",
+    "name": "Coffee"
+  },
+  {
+    "id": "category-004",
+    "restaurantId": "restaurant-003",
+    "name": "Ramen"
+  }
+]

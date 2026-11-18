@@ -1,0 +1,12 @@
+[
+  {
+    "id": "loyalty-001",
+    "customerId": "customer-001",
+    "pointsBalance": 1200
+  },
+  {
+    "id": "loyalty-002",
+    "customerId": "customer-002",
+    "pointsBalance": 0
+  }
+]

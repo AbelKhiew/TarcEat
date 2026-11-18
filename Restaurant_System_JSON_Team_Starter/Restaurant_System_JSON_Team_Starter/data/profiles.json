@@ -1,0 +1,52 @@
+[
+  {
+    "id": "admin-001",
+    "fullName": "Demo Root Admin",
+    "email": "admin@example.test",
+    "phone": "0123456789",
+    "address": null,
+    "role": "root_admin",
+    "isActive": true,
+    "createdAt": "2026-11-17T04:00:00.000Z"
+  },
+  {
+    "id": "owner-001",
+    "fullName": "Sarah Lim",
+    "email": "sarah.owner@example.test",
+    "phone": "0123456789",
+    "address": null,
+    "role": "owner",
+    "isActive": true,
+    "createdAt": "2026-11-17T04:00:00.000Z"
+  },
+  {
+    "id": "owner-002",
+    "fullName": "Aki Tan",
+    "email": "aki.owner@example.test",
+    "phone": "0123456789",
+    "address": null,
+    "role": "owner",
+    "isActive": true,
+    "createdAt": "2026-11-17T04:00:00.000Z"
+  },
+  {
+    "id": "customer-001",
+    "fullName": "Amir Tan",
+    "email": "amir@example.test",
+    "phone": "0123456789",
+    "address": null,
+    "role": "customer",
+    "isActive": true,
+    "createdAt": "2026-11-17T04:00:00.000Z"
+  },
+  {
+    "id": "customer-002",
+    "fullName": "Mei Lee",
+    "email": "mei@example.test",
+    "phone": "0123456789",
+    "address": null,
+    "role": "customer",
+    "isActive": true,
+    "createdAt": "2026-11-17T04:00:00.000Z"
+  }
+]

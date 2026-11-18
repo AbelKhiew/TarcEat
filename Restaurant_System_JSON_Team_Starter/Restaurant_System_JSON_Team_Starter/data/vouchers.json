@@ -1,0 +1,50 @@
+[
+  {
+    "id": "voucher-001",
+    "restaurantId": "restaurant-001",
+    "createdBy": "owner-001",
+    "code": "JADE5",
+    "discountSen": 500,
+    "minimumSpendSen": 2000,
+    "pointsCost": 0,
+    "expiresAt": "2027-12-31T15:59:59.000Z",
+    "claimEnabled": true,
+    "isUsable": true,
+    "totalUseLimit": 100,
+    "perCustomerUseLimit": 2,
+    "usesPerClaim": 1,
+    "archivedAt": null
+  },
+  {
+    "id": "voucher-002",
+    "restaurantId": null,
+    "createdBy": "admin-001",
+    "code": "TABLE10",
+    "discountSen": 1000,
+    "minimumSpendSen": 3000,
+    "pointsCost": 500,
+    "expiresAt": "2027-12-31T15:59:59.000Z",
+    "claimEnabled": true,
+    "isUsable": true,
+    "totalUseLimit": 200,
+    "perCustomerUseLimit": 1,
+    "usesPerClaim": 1,
+    "archivedAt": null
+  },
+  {
+    "id": "voucher-003",
+    "restaurantId": null,
+    "createdBy": "admin-001",
+    "code": "COFFEE5",
+    "discountSen": 500,
+    "minimumSpendSen": 1500,
+    "pointsCost": 300,
+    "expiresAt": "2027-12-31T15:59:59.000Z",
+    "claimEnabled": false,
+    "isUsable": true,
+    "totalUseLimit": 200,
+    "perCustomerUseLimit": 2,
+    "usesPerClaim": 3,
+    "archivedAt": null
+  }
+]

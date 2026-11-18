@@ -1,0 +1,42 @@
+[
+  {
+    "id": "order-item-001",
+    "orderId": "order-001",
+    "itemId": "item-001",
+    "itemName": "Chicken Rice",
+    "quantity": 1,
+    "unitPriceSen": 1800,
+    "lineTotalSen": 1800,
+    "note": ""
+  },
+  {
+    "id": "order-item-002",
+    "orderId": "order-001",
+    "itemId": "item-002",
+    "itemName": "Iced Lemon Tea",
+    "quantity": 1,
+    "unitPriceSen": 600,
+    "lineTotalSen": 600,
+    "note": ""
+  },
+  {
+    "id": "order-item-003",
+    "orderId": "order-002",
+    "itemId": "item-003",
+    "itemName": "Iced Latte",
+    "quantity": 1,
+    "unitPriceSen": 1200,
+    "lineTotalSen": 1200,
+    "note": ""
+  },
+  {
+    "id": "order-item-004",
+    "orderId": "order-003",
+    "itemId": "item-003",
+    "itemName": "Iced Latte",
+    "quantity": 1,
+    "unitPriceSen": 1200,
+    "lineTotalSen": 1200,
+    "note": ""
+  }
+]
