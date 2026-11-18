@@ -1,7 +1,8 @@
-"use server";
+'use server';
+import type * as T from '@/shared/types';
+import { readSession } from './devSession';
+import { result } from './permissions';
 
-import type * as T from "@/shared/types";
-
-export async function getSession(): T.StubResult<T.SessionContext> {
-  // TODO: team lead implements per-user development session; not a global current-user JSON file.
+export async function getSession(): Promise<T.ServiceResult<T.SessionContext>> {
+  return result(readSession);
 }

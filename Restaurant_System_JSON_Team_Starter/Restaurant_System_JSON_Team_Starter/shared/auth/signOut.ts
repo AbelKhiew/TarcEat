@@ -1,7 +1,11 @@
-"use server";
+'use server';
+import type * as T from '@/shared/types';
+import { saveSession } from './devSession';
+import { result } from './permissions';
 
-import type * as T from "@/shared/types";
-
-export async function signOut(): T.StubResult<null> {
-  // TODO: team lead implements per-user development session; not a global current-user JSON file.
+export async function signOut(): Promise<T.ServiceResult<null>> {
+  return result(async () => {
+    await saveSession({ profileId: null, role: null, selectedRestaurantId: null });
+    return null;
+  });
 }

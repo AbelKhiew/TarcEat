@@ -7,6 +7,7 @@ export interface DataStore {
   list<K extends CollectionName>(collection: K, filter?: RowFilter<K>): Promise<RowOf<K>[]>;
   get<K extends CollectionName>(collection: K, id: string): Promise<RowOf<K> | null>;
   create<K extends CollectionName>(collection: K, row: RowOf<K>): Promise<RowOf<K>>;
+  createMany<K extends CollectionName>(collection: K, rows: RowOf<K>[]): Promise<RowOf<K>[]>;
   update<K extends CollectionName>(collection: K, id: string, patch: Partial<Omit<RowOf<K>, 'id'>>): Promise<RowOf<K>>;
   remove<K extends CollectionName>(collection: K, id: string): Promise<boolean>;
 }

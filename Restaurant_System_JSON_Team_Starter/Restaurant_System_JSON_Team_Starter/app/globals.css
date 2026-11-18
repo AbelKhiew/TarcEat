@@ -1,3 +1,7 @@
 @import "../styles/theme.css";
 
 /* Shared theme is above. Add layout rules here; keep colours in styles/theme.css. */
+
+.member-nav { display: flex; flex-wrap: wrap; align-items: center; gap: 1rem; }
+.site-header { flex-wrap: wrap; }
+.table-qr { margin: 0; }

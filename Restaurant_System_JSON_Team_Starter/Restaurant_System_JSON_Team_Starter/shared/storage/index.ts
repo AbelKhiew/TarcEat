@@ -1,4 +1,5 @@
 import "server-only";
+import { createRows } from "./json/createRows.ts";
 import type { DataStore } from "./types.ts";
 import { listRows } from "./json/listRows.ts";
 import { getRow } from "./json/getRow.ts";
@@ -11,6 +12,7 @@ export const store: DataStore = {
   list: listRows,
   get: getRow,
   create: createRow,
+  createMany: createRows,
   update: updateRow,
   remove: deleteRow,
 };

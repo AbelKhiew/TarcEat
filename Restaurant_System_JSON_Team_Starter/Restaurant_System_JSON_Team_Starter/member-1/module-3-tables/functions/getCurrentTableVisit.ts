@@ -1,13 +1,14 @@
-"use server";
+'use server';
+import { store } from '@/shared/storage';
+import { ownedRestaurant, result, RuleError } from '@/shared/auth/permissions';
+import type * as T from '@/shared/types';
 
-import type * as T from "@/shared/types";
-
-/** At most one open visit per table.
- * Expected success data: T.TableVisit | null. Undefined means NOT IMPLEMENTED.
- */
-export async function getCurrentTableVisit(tableId: T.ID): T.StubResult<T.TableVisit | null> {
-  // TODO: validate role, ownership and input first.
-  // TODO: read/add/update/delete through @/shared/storage only.
-  // Keep this file as ONE business function. No fs, localStorage or Supabase here.
-  // When finished: return Promise<T.ServiceResult<T.TableVisit | null>> instead of T.StubResult.
+export async function getCurrentTableVisit(tableId: T.ID): Promise<T.ServiceResult<T.TableVisit | null>> {
+  return result(async () => {
+    const table = await store.get('tables', tableId);
+    if (!table) throw new RuleError('Table not found.');
+    await ownedRestaurant(table.restaurantId);
+    const [visit] = await store.list('visits', { tableId, restaurantId: table.restaurantId, status: 'open' });
+    return visit ?? null;
+  });
 }
