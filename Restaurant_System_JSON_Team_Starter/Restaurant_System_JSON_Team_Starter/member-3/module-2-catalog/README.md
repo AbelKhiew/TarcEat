@@ -32,7 +32,7 @@ Use `page`, `panel`, `button`, `button-secondary`, `field`, `notice`, `badge` an
 
 ## Handover
 
-Member name:
+Member name: 
 Finished functions:
 Finished screens:
 Known gaps:
