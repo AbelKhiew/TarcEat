@@ -1,5 +1,6 @@
-import VoucherManager from './VoucherManager';
+"use client";
 
 export default function RestaurantVoucherManager() {
-  return <VoucherManager platform={false} />;
+  // TODO: build the interface. Call the module function; never access files or browser storage directly.
+  return null;
 }

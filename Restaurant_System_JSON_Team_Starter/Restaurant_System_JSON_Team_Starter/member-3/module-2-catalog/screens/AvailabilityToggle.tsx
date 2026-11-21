@@ -1,11 +1,6 @@
-'use client';
+"use client";
 
-export default function AvailabilityToggle({ isAvailable, disabled, toggle }: {
-  isAvailable: boolean;
-  disabled: boolean;
-  toggle: () => void;
-}) {
-  return <button type="button" className="button-secondary" disabled={disabled} onClick={toggle}>
-    {isAvailable ? 'Mark sold out' : 'Make available'}
-  </button>;
+export default function AvailabilityToggle() {
+  // TODO: build the interface. Call the module function; never access files or browser storage directly.
+  return null;
 }

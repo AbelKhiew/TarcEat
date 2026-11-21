@@ -1,12 +1,13 @@
-'use server';
+"use server";
 
-import type * as T from '@/shared/types';
-import { store } from '@/shared/storage';
-import { result, requireRole } from '@/shared/auth/permissions';
+import type * as T from "@/shared/types";
 
-export async function listPointTransactions(): Promise<T.ServiceResult<T.LoyaltyTransaction[]>> {
-  return result(async () => {
-    const customerId = await requireRole('customer');
-    return (await store.list('loyaltyTransactions', { customerId })).sort((a, b) => b.createdAt.localeCompare(a.createdAt));
-  });
+/** Customer ledger history.
+ * Expected success data: T.LoyaltyTransaction[]. Undefined means NOT IMPLEMENTED.
+ */
+export async function listPointTransactions(): T.StubResult<T.LoyaltyTransaction[]> {
+  // TODO: validate role, ownership and input first.
+  // TODO: read/add/update/delete through @/shared/storage only.
+  // Keep this file as ONE business function. No fs, localStorage or Supabase here.
+  // When finished: return Promise<T.ServiceResult<T.LoyaltyTransaction[]>> instead of T.StubResult.
 }

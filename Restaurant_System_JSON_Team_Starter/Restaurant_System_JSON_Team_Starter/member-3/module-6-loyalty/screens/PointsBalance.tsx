@@ -1,7 +1,6 @@
-import { getMyPoints } from '../functions/getMyPoints';
+"use client";
 
-export default async function PointsBalance() {
-  const result = await getMyPoints();
-  if (!result.ok) return <p className="notice notice-error" role="alert">{result.error.message}</p>;
-  return <p className="badge">{result.data.toLocaleString('en-MY')} points</p>;
+export default function PointsBalance() {
+  // TODO: build the interface. Call the module function; never access files or browser storage directly.
+  return null;
 }

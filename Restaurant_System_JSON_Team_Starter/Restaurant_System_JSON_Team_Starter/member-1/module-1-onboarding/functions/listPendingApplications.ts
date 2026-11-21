@@ -1,13 +1,11 @@
-"use server";
+'use server';
+import { store } from '@/shared/storage';
+import { requireRole, result } from '@/shared/auth/permissions';
+import type * as T from '@/shared/types';
 
-import type * as T from "@/shared/types";
-
-/** Root Admin review queue.
- * Expected success data: T.RestaurantApplication[]. Undefined means NOT IMPLEMENTED.
- */
-export async function listPendingApplications(): T.StubResult<T.RestaurantApplication[]> {
-  // TODO: validate role, ownership and input first.
-  // TODO: read/add/update/delete through @/shared/storage only.
-  // Keep this file as ONE business function. No fs, localStorage or Supabase here.
-  // When finished: return Promise<T.ServiceResult<T.RestaurantApplication[]>> instead of T.StubResult.
+export async function listPendingApplications(): Promise<T.ServiceResult<T.RestaurantApplication[]>> {
+  return result(async () => {
+    await requireRole('root_admin');
+    return store.list('restaurantApplications', { status: 'pending' });
+  });
 }
