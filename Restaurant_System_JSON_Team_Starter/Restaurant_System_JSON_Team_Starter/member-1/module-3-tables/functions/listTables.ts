@@ -1,11 +1,13 @@
-'use server';
-import { store } from '@/shared/storage';
-import { ownedRestaurant, result } from '@/shared/auth/permissions';
-import type * as T from '@/shared/types';
+"use server";
 
-export async function listTables(restaurantId: T.ID): Promise<T.ServiceResult<T.RestaurantTable[]>> {
-  return result(async () => {
-    await ownedRestaurant(restaurantId);
-    return (await store.list('tables', { restaurantId })).sort((a, b) => a.tableNumber - b.tableNumber);
-  });
+import type * as T from "@/shared/types";
+
+/** Derive occupancy from current open visit.
+ * Expected success data: T.RestaurantTable[]. Undefined means NOT IMPLEMENTED.
+ */
+export async function listTables(restaurantId: T.ID): T.StubResult<T.RestaurantTable[]> {
+  // TODO: validate role, ownership and input first.
+  // TODO: read/add/update/delete through @/shared/storage only.
+  // Keep this file as ONE business function. No fs, localStorage or Supabase here.
+  // When finished: return Promise<T.ServiceResult<T.RestaurantTable[]>> instead of T.StubResult.
 }

@@ -1,13 +1,13 @@
-"use server";
+'use server';
 
-import type * as T from "@/shared/types";
+import type * as T from '@/shared/types';
+import { store } from '@/shared/storage';
+import { result, requireRole } from '@/shared/auth/permissions';
 
-/** Balance equals sum of points ledger entries.
- * Expected success data: number. Undefined means NOT IMPLEMENTED.
- */
-export async function getMyPoints(): T.StubResult<number> {
-  // TODO: validate role, ownership and input first.
-  // TODO: read/add/update/delete through @/shared/storage only.
-  // Keep this file as ONE business function. No fs, localStorage or Supabase here.
-  // When finished: return Promise<T.ServiceResult<number>> instead of T.StubResult.
+export async function getMyPoints(): Promise<T.ServiceResult<number>> {
+  return result(async () => {
+    const customerId = await requireRole('customer');
+    const ledger = await store.list('loyaltyTransactions', { customerId });
+    return ledger.reduce((balance, entry) => balance + entry.pointsDelta, 0);
+  });
 }

@@ -1,13 +1,19 @@
-"use server";
+'use server';
 
-import type * as T from "@/shared/types";
+import type * as T from '@/shared/types';
+import { store } from '@/shared/storage';
+import { result, requireRole } from '@/shared/auth/permissions';
 
-/** Claim status and use limits.
- * Expected success data: T.CustomerVoucher[]. Undefined means NOT IMPLEMENTED.
- */
-export async function listMyVouchers(): T.StubResult<T.CustomerVoucher[]> {
-  // TODO: validate role, ownership and input first.
-  // TODO: read/add/update/delete through @/shared/storage only.
-  // Keep this file as ONE business function. No fs, localStorage or Supabase here.
-  // When finished: return Promise<T.ServiceResult<T.CustomerVoucher[]>> instead of T.StubResult.
+export async function listMyVouchers(): Promise<T.ServiceResult<T.CustomerVoucher[]>> {
+  return result(async () => {
+    const customerId = await requireRole('customer');
+    const claims = await store.list('customerVouchers', { customerId });
+    return Promise.all(claims.map(async claim => {
+      const voucher = await store.get('vouchers', claim.voucherId);
+      if (!voucher?.isUsable) return { ...claim, status: 'disabled' };
+      if (Date.parse(voucher.expiresAt) <= Date.now()) return { ...claim, status: 'expired' };
+      if (claim.usesCount >= claim.useLimit) return { ...claim, status: 'exhausted' };
+      return claim;
+    }));
+  });
 }

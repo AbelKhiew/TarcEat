@@ -1,16 +1,13 @@
-'use server';
-import { store } from '@/shared/storage';
-import { result, RuleError } from '@/shared/auth/permissions';
-import { field } from '@/member-1/validation';
-import type * as T from '@/shared/types';
+"use server";
 
-export async function validateTableToken(token: string): Promise<T.ServiceResult<T.TableContext>> {
-  return result(async () => {
-    const value = field(token, 'Table token', 1, 200);
-    const [table] = await store.list('tables', { qrToken: value });
-    const restaurant = table && await store.get('restaurants', table.restaurantId);
-    if (!table || !restaurant || restaurant.status === 'archived') throw new RuleError('This table QR code is unavailable.');
-    const [visit] = await store.list('visits', { tableId: table.id, restaurantId: restaurant.id, status: 'open' });
-    return { table, restaurant, visit: visit ?? null };
-  });
+import type * as T from "@/shared/types";
+
+/** Return context only. Scanning must not create a visit.
+ * Expected success data: T.TableContext. Undefined means NOT IMPLEMENTED.
+ */
+export async function validateTableToken(token: string): T.StubResult<T.TableContext> {
+  // TODO: validate role, ownership and input first.
+  // TODO: read/add/update/delete through @/shared/storage only.
+  // Keep this file as ONE business function. No fs, localStorage or Supabase here.
+  // When finished: return Promise<T.ServiceResult<T.TableContext>> instead of T.StubResult.
 }

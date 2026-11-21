@@ -1,20 +1,13 @@
-'use server';
-import { store } from '@/shared/storage';
-import { serializeChanges } from '@/shared/storage/serializeChanges';
-import { ownedRestaurant, result, RuleError } from '@/shared/auth/permissions';
-import type * as T from '@/shared/types';
+"use server";
 
-export async function deleteTable(tableId: T.ID): Promise<T.ServiceResult<null>> {
-  return result(() => serializeChanges(async () => {
-    const table = await store.get('tables', tableId);
-    if (!table) throw new RuleError('Table not found.');
-    const restaurant = await ownedRestaurant(table.restaurantId);
-    if (restaurant.status === 'archived') throw new RuleError('This restaurant is archived.');
-    const [visits, carts] = await Promise.all([
-      store.list('visits', { tableId }), store.list('carts', { tableToken: table.qrToken }),
-    ]);
-    if (visits.length || carts.length) throw new RuleError('Only unused tables can be deleted. This table has visits or a cart.');
-    await store.remove('tables', tableId);
-    return null;
-  }));
+import type * as T from "@/shared/types";
+
+/** Block if visit is open; retain historical references.
+ * Expected success data: null. Undefined means NOT IMPLEMENTED.
+ */
+export async function deleteTable(tableId: T.ID): T.StubResult<null> {
+  // TODO: validate role, ownership and input first.
+  // TODO: read/add/update/delete through @/shared/storage only.
+  // Keep this file as ONE business function. No fs, localStorage or Supabase here.
+  // When finished: return Promise<T.ServiceResult<null>> instead of T.StubResult.
 }

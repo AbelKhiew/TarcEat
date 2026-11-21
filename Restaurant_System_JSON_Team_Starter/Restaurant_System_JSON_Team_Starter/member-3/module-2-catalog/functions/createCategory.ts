@@ -1,13 +1,15 @@
-"use server";
+'use server';
 
-import type * as T from "@/shared/types";
+import type * as T from '@/shared/types';
+import { store } from '@/shared/storage';
+import { result, ownedRestaurant } from '@/shared/auth/permissions';
+import { randomUUID } from 'node:crypto';
+import { validateCategoryName, serializeCatalogChange } from '../internal/catalog';
 
-/** Create category for owned restaurant.
- * Expected success data: T.Category. Undefined means NOT IMPLEMENTED.
- */
-export async function createCategory(restaurantId: T.ID, input: T.CategoryInput): T.StubResult<T.Category> {
-  // TODO: validate role, ownership and input first.
-  // TODO: read/add/update/delete through @/shared/storage only.
-  // Keep this file as ONE business function. No fs, localStorage or Supabase here.
-  // When finished: return Promise<T.ServiceResult<T.Category>> instead of T.StubResult.
+export async function createCategory(restaurantId: T.ID, input: T.CategoryInput): Promise<T.ServiceResult<T.Category>> {
+  return result(() => serializeCatalogChange(async () => {
+    await ownedRestaurant(restaurantId);
+    const name = await validateCategoryName(restaurantId, input?.name);
+    return store.create('categories', { id: randomUUID(), restaurantId, name });
+  }));
 }
