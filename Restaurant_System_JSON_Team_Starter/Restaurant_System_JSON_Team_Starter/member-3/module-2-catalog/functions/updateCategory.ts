@@ -1,16 +1,13 @@
-'use server';
+"use server";
 
-import type * as T from '@/shared/types';
-import { store } from '@/shared/storage';
-import { result, RuleError, ownedRestaurant } from '@/shared/auth/permissions';
-import { validateCategoryName, serializeCatalogChange } from '../internal/catalog';
+import type * as T from "@/shared/types";
 
-export async function updateCategory(categoryId: T.ID, input: T.CategoryInput): Promise<T.ServiceResult<T.Category>> {
-  return result(() => serializeCatalogChange(async () => {
-    const category = await store.get('categories', categoryId);
-    if (!category) throw new RuleError('Category was not found.');
-    await ownedRestaurant(category.restaurantId);
-    const name = await validateCategoryName(category.restaurantId, input?.name, categoryId);
-    return store.update('categories', categoryId, { name });
-  }));
+/** Edit category.
+ * Expected success data: T.Category. Undefined means NOT IMPLEMENTED.
+ */
+export async function updateCategory(categoryId: T.ID, input: T.CategoryInput): T.StubResult<T.Category> {
+  // TODO: validate role, ownership and input first.
+  // TODO: read/add/update/delete through @/shared/storage only.
+  // Keep this file as ONE business function. No fs, localStorage or Supabase here.
+  // When finished: return Promise<T.ServiceResult<T.Category>> instead of T.StubResult.
 }

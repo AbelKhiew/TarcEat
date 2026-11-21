@@ -2,8 +2,8 @@
 
 Owner: Member 3.
 
-- `functions/`: one business function per file. Server Actions for this module.
-- `screens/`: React screens for the existing routes. Apply shared theme classes.
+- `functions/`: one business function per file. EMPTY bodies, ready to implement.
+- `screens/`: blank React UI placeholders. Apply shared theme classes.
 - `contract.ts`: final function inputs and result types. Keep these stable.
 - `index.ts`: import shortcut. No business logic here.
 
@@ -14,21 +14,21 @@ Replace StubResult with Promise<ServiceResult<T>> as each function is completed.
 
 ## Functions
 
-- [x] `registerCustomer.ts` → `T.Profile`
-- [x] `getMyProfile.ts` → `T.Profile`
-- [x] `updateMyProfile.ts` → `T.Profile`
-- [x] `deactivateMyProfile.ts` → `null`
-- [x] `getMyPoints.ts` → `number`
-- [x] `listPointTransactions.ts` → `T.LoyaltyTransaction[]`
-- [x] `listPlatformOffers.ts` → `T.Voucher[]`
+- [ ] `registerCustomer.ts` → `T.Profile`
+- [ ] `getMyProfile.ts` → `T.Profile`
+- [ ] `updateMyProfile.ts` → `T.Profile`
+- [ ] `deactivateMyProfile.ts` → `null`
+- [ ] `getMyPoints.ts` → `number`
+- [ ] `listPointTransactions.ts` → `T.LoyaltyTransaction[]`
+- [ ] `listPlatformOffers.ts` → `T.Voucher[]`
 - [ ] `claimPlatformVoucher.ts` → `T.CustomerVoucher`
-- [x] `listMyVouchers.ts` → `T.CustomerVoucher[]`
-- [x] `listManagedVouchers.ts` → `T.Voucher[]`
-- [x] `createVoucher.ts` → `T.Voucher`
-- [x] `updateVoucher.ts` → `T.Voucher`
-- [x] `withdrawVoucher.ts` → `T.Voucher`
-- [x] `previewVoucher.ts` → `T.VoucherPreview`
-- [x] `getMyOrderHistory.ts` → `T.Order[]`
+- [ ] `listMyVouchers.ts` → `T.CustomerVoucher[]`
+- [ ] `listManagedVouchers.ts` → `T.Voucher[]`
+- [ ] `createVoucher.ts` → `T.Voucher`
+- [ ] `updateVoucher.ts` → `T.Voucher`
+- [ ] `withdrawVoucher.ts` → `T.Voucher`
+- [ ] `previewVoucher.ts` → `T.VoucherPreview`
+- [ ] `getMyOrderHistory.ts` → `T.Order[]`
 
 ## Theme
 
@@ -38,7 +38,7 @@ Use `page`, `panel`, `button`, `button-secondary`, `field`, `notice`, `badge` an
 ## Handover
 
 Member name:
-Finished functions: all checked public functions above.
-Finished screens: customer registration and sign-in, profile, points, order history, voucher lists, and owner/admin voucher management.
-Known gaps: atomic voucher claiming needs a shared transaction. Checkout redemption, cancellation reversal, and order completion points await the cross-module coordinators. Customer sign-in is available at /account.
+Finished functions:
+Finished screens:
+Known gaps:
 Requested shared contract changes:

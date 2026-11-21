@@ -1,14 +1,13 @@
-'use server';
+"use server";
 
-import type * as T from '@/shared/types';
-import { store } from '@/shared/storage';
-import { result } from '@/shared/auth/permissions';
-import { getOwnedMenuItem, serializeCatalogChange } from '../internal/catalog';
+import type * as T from "@/shared/types";
 
-export async function archiveMenuItem(itemId: T.ID): Promise<T.ServiceResult<T.MenuItem>> {
-  return result(() => serializeCatalogChange(async () => {
-    const item = await getOwnedMenuItem(itemId);
-    if (item.archivedAt) return item;
-    return store.update('menuItems', itemId, { archivedAt: new Date().toISOString(), isAvailable: false });
-  }));
+/** Archive without destroying historical references.
+ * Expected success data: T.MenuItem. Undefined means NOT IMPLEMENTED.
+ */
+export async function archiveMenuItem(itemId: T.ID): T.StubResult<T.MenuItem> {
+  // TODO: validate role, ownership and input first.
+  // TODO: read/add/update/delete through @/shared/storage only.
+  // Keep this file as ONE business function. No fs, localStorage or Supabase here.
+  // When finished: return Promise<T.ServiceResult<T.MenuItem>> instead of T.StubResult.
 }

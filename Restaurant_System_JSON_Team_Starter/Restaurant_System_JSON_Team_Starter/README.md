@@ -21,7 +21,7 @@ owner can review their profile and decide when to begin accepting orders.
 Module 3 covers individual and batch table creation, table renumbering,
 unused-table deletion, per-table QR codes, QR replacement, and table lookup.
 The standard tables page shows Available or Occupied. Scanning a QR code
-does not create a visit. Module 4 can use Module 3's internal helpers on its 
+does not create a visit. Module 4 can use Module 3's internal helpers on its
 working snapshot to open or close visits as part of order submission and
 payment completion.
 

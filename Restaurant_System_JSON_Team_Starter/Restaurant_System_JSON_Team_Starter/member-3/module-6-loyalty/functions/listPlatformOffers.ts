@@ -1,13 +1,13 @@
-'use server';
+"use server";
 
-import type * as T from '@/shared/types';
-import { store } from '@/shared/storage';
-import { result, requireRole } from '@/shared/auth/permissions';
+import type * as T from "@/shared/types";
 
-export async function listPlatformOffers(): Promise<T.ServiceResult<T.Voucher[]>> {
-  return result(async () => {
-    await requireRole('customer');
-    const offers = await store.list('vouchers', { restaurantId: null, claimEnabled: true, isUsable: true });
-    return offers.filter(voucher => !voucher.archivedAt && Date.parse(voucher.expiresAt) > Date.now());
-  });
+/** Platform vouchers claimable with points.
+ * Expected success data: T.Voucher[]. Undefined means NOT IMPLEMENTED.
+ */
+export async function listPlatformOffers(): T.StubResult<T.Voucher[]> {
+  // TODO: validate role, ownership and input first.
+  // TODO: read/add/update/delete through @/shared/storage only.
+  // Keep this file as ONE business function. No fs, localStorage or Supabase here.
+  // When finished: return Promise<T.ServiceResult<T.Voucher[]>> instead of T.StubResult.
 }
