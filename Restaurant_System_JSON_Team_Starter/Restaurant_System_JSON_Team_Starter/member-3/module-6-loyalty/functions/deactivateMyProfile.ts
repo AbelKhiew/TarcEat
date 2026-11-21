@@ -1,13 +1,15 @@
-"use server";
+'use server';
 
-import type * as T from "@/shared/types";
+import type * as T from '@/shared/types';
+import { store } from '@/shared/storage';
+import { result, requireRole } from '@/shared/auth/permissions';
+import { saveSession } from '@/shared/auth/devSession';
 
-/** Deactivate without deleting transaction history.
- * Expected success data: null. Undefined means NOT IMPLEMENTED.
- */
-export async function deactivateMyProfile(): T.StubResult<null> {
-  // TODO: validate role, ownership and input first.
-  // TODO: read/add/update/delete through @/shared/storage only.
-  // Keep this file as ONE business function. No fs, localStorage or Supabase here.
-  // When finished: return Promise<T.ServiceResult<null>> instead of T.StubResult.
+export async function deactivateMyProfile(): Promise<T.ServiceResult<null>> {
+  return result(async () => {
+    const id = await requireRole('customer');
+    await store.update('profiles', id, { isActive: false });
+    await saveSession({ profileId: null, role: null, selectedRestaurantId: null });
+    return null;
+  });
 }
