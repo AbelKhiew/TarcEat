@@ -3,4 +3,4 @@ https://www.figma.com/design/gqNIXJAfHGoVp9CtTuBpK8/Table---Co-%E2%80%94-Editabl
 
 copy paste ui & work flow demo
 
-https://supabase.com/
+https://supabase.com/ 
