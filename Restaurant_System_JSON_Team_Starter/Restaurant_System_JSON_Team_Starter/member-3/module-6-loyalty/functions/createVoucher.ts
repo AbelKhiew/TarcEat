@@ -1,13 +1,17 @@
-"use server";
+'use server';
 
-import type * as T from "@/shared/types";
+import type * as T from '@/shared/types';
+import { store } from '@/shared/storage';
+import { result } from '@/shared/auth/permissions';
+import { randomUUID } from 'node:crypto';
+import { serializeVoucherChange, validateVoucher, voucherManager } from '../internal/vouchers';
 
-/** restaurantId null means platform. Validate role, scope and limits.
- * Expected success data: T.Voucher. Undefined means NOT IMPLEMENTED.
- */
-export async function createVoucher(input: T.VoucherInput): T.StubResult<T.Voucher> {
-  // TODO: validate role, ownership and input first.
-  // TODO: read/add/update/delete through @/shared/storage only.
-  // Keep this file as ONE business function. No fs, localStorage or Supabase here.
-  // When finished: return Promise<T.ServiceResult<T.Voucher>> instead of T.StubResult.
+export async function createVoucher(input: T.VoucherInput): Promise<T.ServiceResult<T.Voucher>> {
+  return result(async () => {
+    return serializeVoucherChange(async () => {
+      const voucher = await validateVoucher(input);
+      const createdBy = await voucherManager(voucher.restaurantId);
+      return store.create('vouchers', { ...voucher, id: randomUUID(), createdBy, archivedAt: null });
+    });
+  });
 }
