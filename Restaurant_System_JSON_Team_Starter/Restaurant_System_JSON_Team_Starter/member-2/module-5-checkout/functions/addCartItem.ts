@@ -1,13 +1,23 @@
 "use server";
-
-import type * as T from "@/shared/types";
-
-/** Use catalog item ID, not client price.
- * Expected success data: T.Cart. Undefined means NOT IMPLEMENTED.
- */
-export async function addCartItem(cartId: T.ID, input: T.AddCartLineInput): T.StubResult<T.Cart> {
-  // TODO: validate role, ownership and input first.
-  // TODO: read/add/update/delete through @/shared/storage only.
-  // Keep this file as ONE business function. No fs, localStorage or Supabase here.
-  // When finished: return Promise<T.ServiceResult<T.Cart>> instead of T.StubResult.
+import { randomUUID } from 'node:crypto';
+import { store } from '@/shared/storage';
+import { result, RuleError } from '@/shared/auth/permissions';
+import { getCartAccess, eligibleRestaurant, requireQuantity, validateNote, now } from '@/member-2/internal/rules';
+import { serializeMemberTwo } from '@/member-2/internal/serialize';
+import type * as T from '@/shared/types';
+export async function addCartItem(cartId: T.ID, input: T.AddCartLineInput): Promise<T.ServiceResult<T.Cart>> {
+  return result(() => serializeMemberTwo(async () => {
+    const cart = await getCartAccess(cartId);
+    await eligibleRestaurant(cart.restaurantId);
+    const item = await store.get('menuItems', input?.itemId);
+    if (!item || item.restaurantId !== cart.restaurantId || item.archivedAt || !item.isAvailable)
+      throw new RuleError('This menu item is unavailable at the selected restaurant.');
+    const quantity = requireQuantity(input.quantity);
+    const note = validateNote(input.note);
+    const lines = [...cart.lines];
+    const previous = lines.find(l => l.itemId === item.id && l.note === note);
+    if (previous) previous.quantity = requireQuantity(previous.quantity + quantity);
+    else lines.push({ id: randomUUID(), itemId: item.id, quantity, note });
+    return store.update('carts', cart.id, { lines, updatedAt: now() });
+  }));
 }

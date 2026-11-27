@@ -1,6 +1,7 @@
 "use client";
-
+import Link from 'next/link';
 export default function ReceiptPrintActions() {
-  // TODO: build the interface. Call the module function; never access files or browser storage directly.
-  return null;
+ return <div style={{display:'flex',gap:12,flexWrap:'wrap'}}>
+ <button className="button" onClick={()=>window.print()}>Print receipt</button>
+ <Link className="button button-secondary" href="/restaurants">Done</Link></div>;
 }

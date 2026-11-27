@@ -1,6 +1,4 @@
 "use client";
-
-export default function PickupCheckoutForm() {
-  // TODO: build the interface. Call the module function; never access files or browser storage directly.
-  return null;
-}
+import DineInCheckoutForm from './DineInCheckoutForm';
+/** One shared checkout screen uses cart.mode to show pickup-only fields. */
+export default function PickupCheckoutForm() { return <DineInCheckoutForm />; }

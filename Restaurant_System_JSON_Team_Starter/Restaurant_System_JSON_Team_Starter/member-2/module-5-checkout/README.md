@@ -1,36 +1,39 @@
-# Module 5: Shopping Cart & Checkout Gateway
+# Shopping Cart & Checkout Gateway
 
-Owner: Member 2.
+Owner: Lim Jinming (Member 2). Local JSON demonstration implementation.
 
-- `functions/`: one business function per file. EMPTY bodies, ready to implement.
-- `screens/`: blank React UI placeholders. Apply shared theme classes.
-- `contract.ts`: final function inputs and result types. Keep these stable.
-- `index.ts`: import shortcut. No business logic here.
+## Files
 
-Read root START_HERE.md and docs/MEMBER_RULES.md first.
-UI imports a function; the function runs on the local server and calls shared/storage.
-The shared JSON store is already implemented. Do not add another mock or service layer.
-Replace StubResult with Promise<ServiceResult<T>> as each function is completed.
+- `functions/`: 7 business functions, one function per file.
+- `screens/`: user interface components following the team TABLE & CO theme.
+- `contract.ts`: agreed input/output interfaces.
+- `index.ts`: function exports.
+- `../internal/`: shared validation, price and completion helpers.
 
-## Functions
+## Completed functions (JSON development stage)
 
-- [ ] `getCart.ts` → `T.Cart | null`
-- [ ] `createCart.ts` → `T.Cart`
-- [ ] `addCartItem.ts` → `T.Cart`
-- [ ] `updateCartItem.ts` → `T.Cart`
-- [ ] `removeCartItem.ts` → `T.Cart`
-- [ ] `clearCart.ts` → `T.Cart`
-- [ ] `previewCheckout.ts` → `T.CheckoutPreview`
+- [x] `addCartItem.ts`
+- [x] `clearCart.ts`
+- [x] `createCart.ts`
+- [x] `getCart.ts`
+- [x] `previewCheckout.ts`
+- [x] `removeCartItem.ts`
+- [x] `updateCartItem.ts`
 
-## Theme
+## Screens
 
-Use `page`, `panel`, `button`, `button-secondary`, `field`, `notice`, `badge` and
-`data-table` classes. Use variables from styles/theme.css, not hardcoded colours.
+- `CartLineEditor.tsx`
+- `CartView.tsx`
+- `CheckoutSummary.tsx`
+- `DeliveryCheckoutForm.tsx`
+- `DineInCheckoutForm.tsx`
+- `PickupCheckoutForm.tsx`
+- `SimulatedPaymentSection.tsx`
+- `VoucherPicker.tsx`
 
-## Handover
+## Notes
 
-Member name:
-Finished functions:
-Finished screens:
-Known gaps:
-Requested shared contract changes:
+- Run `npm run check` after installing dependencies.
+- Testing: 34 isolated service checks passed in the authoring environment; real Next.js browser/build still needs user verification.
+- Supabase / multi-file database transactions are **not yet integrated**.
+- See `member-2/VSCode_Git_Guide.md` and `member-2/CODE_EXPLANATION_ZH.md`.

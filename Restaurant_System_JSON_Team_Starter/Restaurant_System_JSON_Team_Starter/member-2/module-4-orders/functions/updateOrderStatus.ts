@@ -1,13 +1,16 @@
 "use server";
-
-import type * as T from "@/shared/types";
-
-/** Validate transition. Dine-in completion uses finishTableVisit; cancellation uses review.
- * Expected success data: T.Order. Undefined means NOT IMPLEMENTED.
- */
-export async function updateOrderStatus(orderId: T.ID, status: T.OrderStatus): T.StubResult<T.Order> {
-  // TODO: validate role, ownership and input first.
-  // TODO: read/add/update/delete through @/shared/storage only.
-  // Keep this file as ONE business function. No fs, localStorage or Supabase here.
-  // When finished: return Promise<T.ServiceResult<T.Order>> instead of T.StubResult.
+import { store } from '@/shared/storage';
+import { result, RuleError } from '@/shared/auth/permissions';
+import { getOrderOrError, requireOwnerOfOrder } from '@/member-2/internal/rules';
+import { serializeMemberTwo } from '@/member-2/internal/serialize';
+import type * as T from '@/shared/types';
+export async function updateOrderStatus(orderId: T.ID, status: T.OrderStatus): Promise<T.ServiceResult<T.Order>> {
+  return result(() => serializeMemberTwo(async () => {
+    const order = await getOrderOrError(orderId);
+    await requireOwnerOfOrder(order);
+    if (order.cancellationStatus === 'requested') throw new RuleError('Review the cancellation request before preparing this order.');
+    if ((order.status === 'pending' && status === 'preparing') || (order.status === 'preparing' && status === 'ready'))
+      return store.update('orders', order.id, { status });
+    throw new RuleError('Only Pending → Preparing → Ready is allowed here.');
+  }));
 }
