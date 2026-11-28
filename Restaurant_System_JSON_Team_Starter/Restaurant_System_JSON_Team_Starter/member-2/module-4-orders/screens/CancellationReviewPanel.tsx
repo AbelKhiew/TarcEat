@@ -1,6 +1,4 @@
 "use client";
-
-export default function CancellationReviewPanel() {
-  // TODO: build the interface. Call the module function; never access files or browser storage directly.
-  return null;
-}
+import KitchenQueue from './KitchenQueue';
+/** Cancellation buttons are on the order cards, so the owner can resolve them before preparation. */
+export default function CancellationReviewPanel() { return <KitchenQueue />; }

@@ -1,13 +1,15 @@
 "use server";
-
-import type * as T from "@/shared/types";
-
-/** Archive eligible completed/cancelled orders, never erase history.
- * Expected success data: T.Order. Undefined means NOT IMPLEMENTED.
- */
-export async function archiveOrder(orderId: T.ID): T.StubResult<T.Order> {
-  // TODO: validate role, ownership and input first.
-  // TODO: read/add/update/delete through @/shared/storage only.
-  // Keep this file as ONE business function. No fs, localStorage or Supabase here.
-  // When finished: return Promise<T.ServiceResult<T.Order>> instead of T.StubResult.
+import { store } from '@/shared/storage';
+import { result, RuleError } from '@/shared/auth/permissions';
+import { getOrderOrError, requireOwnerOfOrder, now } from '@/member-2/internal/rules';
+import { serializeMemberTwo } from '@/member-2/internal/serialize';
+import type * as T from '@/shared/types';
+export async function archiveOrder(orderId: T.ID): Promise<T.ServiceResult<T.Order>> {
+  return result(() => serializeMemberTwo(async () => {
+    const order = await getOrderOrError(orderId);
+    await requireOwnerOfOrder(order);
+    if (!['completed', 'cancelled'].includes(order.status)) throw new RuleError('Only completed or cancelled orders can be archived.');
+    if (order.archivedAt) return order;
+    return store.update('orders', orderId, { archivedAt: now() });
+  }));
 }

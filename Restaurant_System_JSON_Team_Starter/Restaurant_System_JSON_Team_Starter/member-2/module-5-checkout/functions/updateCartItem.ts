@@ -1,13 +1,16 @@
 "use server";
-
-import type * as T from "@/shared/types";
-
-/** Positive integer quantity; validate notes.
- * Expected success data: T.Cart. Undefined means NOT IMPLEMENTED.
- */
-export async function updateCartItem(cartId: T.ID, lineId: T.ID, input: T.UpdateCartLineInput): T.StubResult<T.Cart> {
-  // TODO: validate role, ownership and input first.
-  // TODO: read/add/update/delete through @/shared/storage only.
-  // Keep this file as ONE business function. No fs, localStorage or Supabase here.
-  // When finished: return Promise<T.ServiceResult<T.Cart>> instead of T.StubResult.
+import { store } from '@/shared/storage';
+import { result, RuleError } from '@/shared/auth/permissions';
+import { getCartAccess, requireQuantity, validateNote, now } from '@/member-2/internal/rules';
+import { serializeMemberTwo } from '@/member-2/internal/serialize';
+import type * as T from '@/shared/types';
+export async function updateCartItem(cartId: T.ID, lineId: T.ID, input: T.UpdateCartLineInput): Promise<T.ServiceResult<T.Cart>> {
+  return result(() => serializeMemberTwo(async () => {
+    const cart = await getCartAccess(cartId);
+    const quantity = requireQuantity(input?.quantity);
+    const note = validateNote(input?.note);
+    if (!cart.lines.some(line => line.id === lineId)) throw new RuleError('Cart item was not found.');
+    const lines = cart.lines.map(line => line.id === lineId ? { ...line, quantity, note } : line);
+    return store.update('carts', cart.id, { lines, updatedAt: now() });
+  }));
 }

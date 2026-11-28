@@ -1,0 +1,12 @@
+/* Subtle flashing animation for the Module 4 notification banner. */
+.tarceat-alert {
+  border: 2px solid var(--color-primary);
+  animation: tarceat-flash 1.15s ease-in-out infinite;
+}
+@keyframes tarceat-flash {
+  0%, 100% { opacity: 1; }
+  50% { opacity: .52; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .tarceat-alert { animation: none; }
+}
